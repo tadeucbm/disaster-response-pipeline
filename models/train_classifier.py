@@ -1,6 +1,7 @@
 import sys
 # import libraries
 import pandas as pd
+import pickle
 from sqlalchemy import create_engine
 
 import re
@@ -22,6 +23,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('omw-1.4')
 
 def load_data(database_filepath):
     """
@@ -78,14 +80,13 @@ def build_model():
     ])
     
     parameters = {
-    'vect__max_df': (0.5, 0.75, 1.0),
-    'vect__max_features': (None, 5000, 10000),
-    'tfidf__use_idf': (True, False)
+    'clf__estimator__n_estimators':[10, 20],
     }
     
-    best = GridSearchCV(pipeline, parameters, verbose=1)
+    #train_model = GridSearchCV(pipeline, parameters, verbose=1)
+    train_model = pipeline
     
-    return best
+    return train_model
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
@@ -97,7 +98,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
         Y_test - Y data to test
         category_names - Name of the response variables
     """
-    predicts = train_model.predict(X_test)
+    predicts = model.predict(X_test)
     dict_results = {}
     for i, col in enumerate(Y_test):
         print('Column:', col)
@@ -111,7 +112,8 @@ def save_model(model, model_filepath):
         model - model object
         model_filepath - destination path of the pickle
     """
-    dump(model, model_filepath)
+    file_ = open(model_filepath, 'wb')
+    pickle.dump(model, file_)
 
 
 def main():
