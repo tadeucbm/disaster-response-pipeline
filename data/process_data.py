@@ -39,6 +39,8 @@ def clean_data(df):
         categories[column] = categories[column].apply(lambda x: x.split('-')[1])
         # convert column from string to numeric
         categories[column] = categories[column].astype('int64')
+        # transform 2 values in 1
+        categories[column] = categories[column].apply(lambda x: 1 if x >= 1 else 0)
     # drop the original categories column from `df`
     df = pd.merge(df, categories, left_index=True, right_index=True).drop('categories', axis=1)
     # drop duplicates

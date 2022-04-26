@@ -43,6 +43,17 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    # Plot Frequency
+    sum_dict = {}
+    for col in df.iloc[:, 4:]:
+        sum_dict[col] = [df[col].sum()]
+    df_aux = pd.DataFrame(sum_dict).T.reset_index()
+    df_aux.columns = ['categorie', 'frequency']
+    df_aux = df_aux.sort_values(by='frequency', ascending=False)
+
+    cat_count = df_aux['frequency'][:10]
+    cat_name = df_aux['categorie'][:10]
+    
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -61,6 +72,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=cat_name,
+                    y=cat_count
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 10 Categories Frequency',
+                'yaxis': {
+                    'title': "Frequency"
+                },
+                'xaxis': {
+                    'title': "Categorie"
                 }
             }
         }

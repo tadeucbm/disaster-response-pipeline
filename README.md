@@ -12,8 +12,10 @@
 8. joblib 1.1.0  
 
 ## Project Motivation:
-The motivation of this project is to use disaster data to build a model that classifies messages. The project goes through the stages of
-a Machine Learning Pipeline with the ETL process, modeling and deploying an app.
+This project aims to implement NLP techniques to classify messages written in disasters into specific categories, 
+so that the appropriate disaster relief agencies have real-time feedback on the messages, and can make more agile decisions 
+in this type of situation.
+
 
 ## File Descriptions:
 The project contains three main files:
