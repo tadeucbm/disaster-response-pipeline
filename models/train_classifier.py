@@ -83,8 +83,7 @@ def build_model():
     'clf__estimator__n_estimators':[10, 20],
     }
     
-    #train_model = GridSearchCV(pipeline, parameters, verbose=1)
-    train_model = pipeline
+    train_model = GridSearchCV(pipeline, parameters, verbose=1)
     
     return train_model
 
