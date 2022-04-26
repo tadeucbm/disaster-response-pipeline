@@ -1,6 +1,6 @@
 # Disaster Response Pipeline Project
 
-### Instalations:
+## Instalations:
 1. Python 3.7.9  
 1. pandas 1.3.5  
 2. plotly 5.7.0  
@@ -11,17 +11,18 @@
 7. numpy 1.21.6  
 8. joblib 1.1.0  
 
-### Project Motivation:
-The motivation of this project is to use disaster data to build a model that classifies disaster messages. The project goes through the stages of
-a Machine Learning Pipeline with the etl process, modeling and deploying an app.
+## Project Motivation:
+The motivation of this project is to use disaster data to build a model that classifies messages. The project goes through the stages of
+a Machine Learning Pipeline with the ETL process, modeling and deploying an app.
 
-### File Descriptions:
+## File Descriptions:
 The project contains three main files:
 1. process_data.py: Makes all transformations in disaster_categories.csv and disaster_messages.csv to load them into the database
 DisasterResponse.db.
 2. train_classifier.py: Makes predictions and evaluations for all categories in the data.  
 3. run.pu: The file that run the visual application to make predictions within new words.
-### Instructions:
+
+## Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -34,5 +35,5 @@ DisasterResponse.db.
 
 3. Go to http://0.0.0.0:3001/
 
-### Acknowledgements:
+## Acknowledgements:
 Thanks to udacity for bringing quality content about the pipeline process of a machine learning model
