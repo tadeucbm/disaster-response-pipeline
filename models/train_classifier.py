@@ -116,6 +116,9 @@ def save_model(model, model_filepath):
 
 
 def main():
+    """
+    Function main to make all modeling
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
